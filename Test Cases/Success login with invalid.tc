@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Success login with invalid</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b61c4e1a-fb8e-4cf4-a996-4c0df99638dc</testCaseGuid>
+</TestCaseEntity>
