@@ -16,15 +16,23 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import groovy.json.JsonSlurper as JsonSlurper
 
-Mobile.startApplication('bs://7f5afff47d175561397db41b991950df5d5bb367', true)
+response = WS.sendRequestAndVerify(findTestObject('APi/Create user'))
 
-Mobile.setText(findTestObject('Object Repository/android.widget.EditText - Username'), '123', 0)
+WS.verifyResponseStatusCode(response, 201)
 
-Mobile.setText(findTestObject('Object Repository/android.widget.EditText - Password'), '123', 0)
+def json = new JsonSlurper().parseText(response.getResponseBodyContent())
 
-Mobile.tap(findTestObject('Object Repository/android.view.ViewGroup'), 0)
+WS.verifyEqual(json.name, 'morpheus')
 
-Mobile.verifyElementText(findTestObject('Object Repository/android.widget.TextView - Username and password do not match any user in this service'), 
-    'Username and password do not match any user in this service.')
+WS.verifyEqual(json.job, 'leader')
+
+WS.verifyEqual(json.name instanceof String, true)
+
+WS.verifyEqual(json.job instanceof String, true)
+
+not_run: WS.verifyEqual(json.id instanceof String, true)
+
+WS.verifyEqual(json.createdAt instanceof String, true)
 
