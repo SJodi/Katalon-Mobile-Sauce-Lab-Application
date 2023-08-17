@@ -17,12 +17,22 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-Mobile.startApplication('bs://7f5afff47d175561397db41b991950df5d5bb367', true)
+WebUI.openBrowser('')
 
-Mobile.setText(findTestObject('Object Repository/android.widget.EditText - Username'), 'standard_user', 0)
+WebUI.navigateToUrl('https://www.saucedemo.com/')
 
-Mobile.setText(findTestObject('Object Repository/android.widget.EditText - Password'), 'secret_sauce', 0)
+WebUI.setText(findTestObject('Object Repository/Web/Page_Swag Labs/input_Swag Labs_user-name'), 'standard_user')
 
-Mobile.tap(findTestObject('Object Repository/android.view.ViewGroup'), 0)
+WebUI.setEncryptedText(findTestObject('Object Repository/Web/Page_Swag Labs/input_Swag Labs_password'), 'qcu24s4901FyWDTwXGr6XA==')
 
-Mobile.verifyElementVisible(findTestObject('Object Repository/android.view.ViewGroup (1)'), 0)
+WebUI.click(findTestObject('Object Repository/Web/Page_Swag Labs/input_Swag Labs_login-button'))
+
+WebUI.click(findTestObject('Object Repository/Web/Page_Swag Labs/div_ProductsName (A to Z)Name (A to Z)Name _30bf04'))
+
+WebUI.verifyElementPresent(findTestObject('Object Repository/Web/Page_Swag Labs/div_ProductsName (A to Z)Name (A to Z)Name _30bf04'), 
+    0)
+
+WebUI.verifyElementVisible(findTestObject('Object Repository/Web/Page_Swag Labs/div_Swag Labs'))
+
+WebUI.closeBrowser()
+
